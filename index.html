@@ -190,17 +190,10 @@
         position: relative;
         width: min(100%, 430px);
         justify-self: center;
-        padding: .8rem;
-        border: 1px solid rgba(128, 100, 62, .2);
-        border-radius: 48% 48% 28px 28px;
-        background: linear-gradient(145deg, #e6d4bd, #c8a27a);
-        box-shadow: 0 22px 50px rgba(84, 58, 33, .13);
-        transform: rotate(2deg);
       }
       .hero-art img {
         width: 100%;
         height: 390px;
-        border-radius: 48% 48% 20px 20px;
         object-fit: cover;
         object-position: center;
       }
@@ -217,6 +210,33 @@
         font: 400 1.55rem/1 var(--script);
         transform: rotate(-4deg);
       }
+
+      .fathers-banner {
+        padding-block: 1.5rem;
+        background: #efe5d8;
+      }
+      .fathers-banner-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.25rem;
+        border: 1px solid rgba(201, 162, 39, .35);
+        border-radius: 22px;
+        background: rgba(255, 253, 249, .7);
+      }
+      .fathers-banner-copy .eyebrow { margin-bottom: .45rem; }
+      .fathers-banner h2 {
+        margin-bottom: .4rem;
+        font-size: clamp(1.6rem, 6vw, 2.3rem);
+        line-height: 1.15;
+      }
+      .fathers-banner p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: .82rem;
+      }
+      .fathers-banner .button { align-self: stretch; }
 
       .section { padding-block: 4.3rem; }
       .section-heading {
@@ -448,6 +468,14 @@
         .hero { padding-block: 5rem 6rem; }
         .hero-inner { grid-template-columns: 1.1fr .9fr; gap: 2rem; }
         .hero-art img { height: 440px; }
+        .fathers-banner-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1.5rem;
+          padding: 1.5rem 2rem;
+        }
+        .fathers-banner .button { align-self: center; flex: 0 0 auto; }
         .section { padding-block: 5.5rem; }
         .section-heading { flex-direction: row; align-items: end; justify-content: space-between; }
         .section-heading > p { padding-bottom: .25rem; }
@@ -498,8 +526,8 @@
         <div class="section-inner hero-inner">
           <div class="hero-copy">
             <span class="eyebrow">Little things. Big feelings.</span>
-            <h1 id="hero-title">Say it with a <span class="script-accent">little love note.</span></h1>
-            <p>For the “I was thinking of you” moments, the big celebrations, and everything your heart wants to say. Har card, made with a little extra love.</p>
+            <h1 id="hero-title">We Design Your <span class="script-accent">Expressions!</span></h1>
+            <p>We make handmade greeting cards for birthdays, big celebrations, and all the little things you want to say. Har card, made with a little extra love.</p>
             <div class="hero-actions">
               <a class="button" href="#cards">Find your card <span aria-hidden="true">&nbsp;→</span></a>
               <a class="button button-secondary" href="#about">Our little story</a>
@@ -509,6 +537,17 @@
             <img src="images/Screenshot 2026-11-23 165115.png" alt="Handmade card showing two colourful hands meeting over a cup of chai">
             <span class="art-note">made just for you</span>
           </div>
+        </div>
+      </section>
+
+      <section class="fathers-banner" aria-labelledby="fathers-banner-title">
+        <div class="section-inner fathers-banner-inner">
+          <div class="fathers-banner-copy">
+            <span class="eyebrow">A little love for Father’s Day 💛</span>
+            <h2 id="fathers-banner-title">Abbu jee tussi great ho</h2>
+            <p>A handmade card for the everyday hero. Add your own words for Abbu.</p>
+          </div>
+          <a class="button" href="order.html">Make Abbu a card <span aria-hidden="true">&nbsp;→</span></a>
         </div>
       </section>
 
