@@ -450,6 +450,100 @@
         font-size: .67rem;
       }
 
+      .sample-reviews {
+        border-top: 1px solid rgba(31, 31, 31, .07);
+        background: rgba(255, 253, 249, .65);
+      }
+      .sample-review-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+      }
+      .sample-review-card {
+        min-width: 0;
+        overflow: hidden;
+        border: 1px solid rgba(201, 162, 39, .3);
+        border-radius: 20px;
+        background: var(--paper);
+        box-shadow: 0 7px 22px rgba(80, 57, 34, .05);
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .sample-review-card:nth-child(2) { background: #f7f2fc; }
+      .sample-review-card:nth-child(3) { background: #fff8f1; }
+      .sample-review-card:hover, .sample-review-card:focus-within {
+        box-shadow: 0 13px 28px rgba(80, 57, 34, .11);
+        transform: translateY(-4px) rotate(-.5deg);
+      }
+      .sample-review-card summary {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        padding: 1rem;
+        cursor: pointer;
+        list-style: none;
+      }
+      .sample-review-card summary:focus-visible {
+        border-radius: 20px;
+        outline: 3px solid rgba(201, 162, 39, .55);
+        outline-offset: -3px;
+      }
+      .sample-review-card summary::-webkit-details-marker { display: none; }
+      .review-doodle {
+        display: grid;
+        width: 2.7rem;
+        height: 2.7rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border: 1px solid rgba(201, 162, 39, .28);
+        border-radius: 16px;
+        background: #fffaf1;
+        font-size: 1.35rem;
+      }
+      .sample-review-card:hover .review-doodle,
+      .sample-review-card:focus-within .review-doodle {
+        animation: doodle-bob .6s ease-in-out infinite alternate;
+      }
+      .review-copy { display: grid; gap: .15rem; }
+      .sample-label {
+        color: #80643e;
+        font-size: .6rem;
+        font-weight: 600;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .review-title { font: 600 .95rem/1.3 var(--serif); }
+      .review-toggle {
+        display: grid;
+        width: 1.8rem;
+        height: 1.8rem;
+        flex: 0 0 auto;
+        margin-left: auto;
+        place-items: center;
+        border-radius: 50%;
+        background: #f3eadb;
+        color: #6b5423;
+        font-size: 1.1rem;
+        transition: transform .2s ease;
+      }
+      .review-toggle::before { content: "+"; }
+      .sample-review-card[open] .review-toggle { transform: rotate(45deg); }
+      .review-placeholder {
+        margin: 0;
+        padding: 0 1rem 1rem 4.45rem;
+        color: var(--muted);
+        font-size: .74rem;
+      }
+      .sample-review-card[open] .review-placeholder {
+        animation: review-reveal .3s ease both;
+      }
+      @keyframes doodle-bob {
+        to { transform: translateY(-4px) rotate(8deg); }
+      }
+      @keyframes review-reveal {
+        from { opacity: 0; transform: translateY(-.35rem); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       .site-footer {
         padding-block: 1.5rem;
         background: var(--charcoal);
@@ -479,6 +573,7 @@
         .section { padding-block: 5.5rem; }
         .section-heading { flex-direction: row; align-items: end; justify-content: space-between; }
         .section-heading > p { padding-bottom: .25rem; }
+        .sample-review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
         .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
         .card-image, .card-art { height: 175px; }
         .card-copy { padding: 1rem 1rem 1.15rem; }
@@ -501,6 +596,8 @@
         *, *::before, *::after {
           scroll-behavior: auto !important;
           transition-duration: .01ms !important;
+          animation-duration: .01ms !important;
+          animation-iteration-count: 1 !important;
         }
       }
     </style>
@@ -704,6 +801,44 @@
             <p class="form-fine-print">This sample form checks your details in this browser. It does not send or save your information.</p>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
+        </div>
+      </section>
+
+      <section class="section sample-reviews" aria-labelledby="sample-reviews-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Little notes, lots of love</span>
+              <h2 id="sample-reviews-title">Sample reviews</h2>
+            </div>
+            <p>These are placeholders, not real customer feedback. Replace them with genuine reviews only with permission.</p>
+          </div>
+          <div class="sample-review-grid">
+            <details class="sample-review-card">
+              <summary>
+                <span class="review-doodle" aria-hidden="true">💌</span>
+                <span class="review-copy"><span class="sample-label">Sample review</span><span class="review-title">A little love note</span></span>
+                <span class="review-toggle" aria-hidden="true"></span>
+              </summary>
+              <p class="review-placeholder">Sample text only — add a real customer’s words here.</p>
+            </details>
+            <details class="sample-review-card">
+              <summary>
+                <span class="review-doodle" aria-hidden="true">🎀</span>
+                <span class="review-copy"><span class="sample-label">Sample review</span><span class="review-title">Made just for them</span></span>
+                <span class="review-toggle" aria-hidden="true"></span>
+              </summary>
+              <p class="review-placeholder">Sample text only — add a real customer’s words here.</p>
+            </details>
+            <details class="sample-review-card">
+              <summary>
+                <span class="review-doodle" aria-hidden="true">🌷</span>
+                <span class="review-copy"><span class="sample-label">Sample review</span><span class="review-title">A sweet surprise</span></span>
+                <span class="review-toggle" aria-hidden="true"></span>
+              </summary>
+              <p class="review-placeholder">Sample text only — add a real customer’s words here.</p>
+            </details>
+          </div>
         </div>
       </section>
     </main>
