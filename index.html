@@ -211,6 +211,52 @@
         transform: rotate(-4deg);
       }
 
+      .section.instagram-section { padding-block: 2rem 3.5rem; }
+      .instagram-card {
+        width: min(100%, 720px);
+        margin-inline: auto;
+        padding: .8rem;
+        border: 1px solid var(--gold);
+        border-radius: 24px;
+        background: var(--cream);
+        box-shadow: 0 12px 30px rgba(205, 191, 230, .45);
+        text-align: center;
+      }
+      .instagram-card:hover { animation: instagram-bounce .45s ease; }
+      .instagram-card h2 {
+        margin-bottom: .45rem;
+        font-size: clamp(1.7rem, 7vw, 2.5rem);
+        line-height: 1.15;
+      }
+      .instagram-card > p {
+        margin-bottom: 1.1rem;
+        color: var(--muted);
+        font-size: .82rem;
+      }
+      .instagram-frame {
+        display: block;
+        width: 100%;
+        height: min(70vh, 650px);
+        min-height: 420px;
+        border: 0;
+        border-radius: 16px;
+        background: var(--paper);
+      }
+      .instagram-fallback {
+        margin: .85rem 0 1rem;
+        color: var(--muted);
+        font-size: .72rem;
+      }
+      .button-instagram {
+        border-color: var(--gold);
+        background: var(--gold);
+        color: var(--charcoal);
+      }
+      @keyframes instagram-bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+
       .fathers-banner {
         padding-block: 1.5rem;
         background: #efe5d8;
@@ -633,6 +679,23 @@
           <div class="hero-art">
             <img src="images/Screenshot 2026-11-23 165115.png" alt="Handmade card showing two colourful hands meeting over a cup of chai">
             <span class="art-note">made just for you</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section instagram-section" aria-labelledby="instagram-title">
+        <div class="section-inner">
+          <div class="instagram-card">
+            <h2 id="instagram-title">Follow Our Handmade World 🤍</h2>
+            <p>See our latest handmade cards on Instagram <strong>@expressit.pk</strong>.</p>
+            <iframe
+              class="instagram-frame"
+              src="https://www.instagram.com/expressit.pk/embed"
+              title="Instagram posts from Express It"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <p class="instagram-fallback">If the posts don’t show up here, no worries—visit us on Instagram instead.</p>
+            <a class="button button-instagram" href="https://www.instagram.com/expressit.pk/" target="_blank" rel="noopener noreferrer">Follow us on Instagram</a>
           </div>
         </div>
       </section>
