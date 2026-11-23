@@ -190,25 +190,165 @@
         position: relative;
         width: min(100%, 430px);
         justify-self: center;
+        padding: 1.1rem;
+        isolation: isolate;
+        animation: hero-art-float 4s ease-in-out infinite;
       }
-      .hero-art img {
+      .hero-art::before, .hero-art::after {
+        position: absolute;
+        z-index: 2;
+        color: var(--gold);
+        font-size: 1.8rem;
+        opacity: .35;
+        pointer-events: none;
+        transition: opacity .2s ease, transform .2s ease;
+      }
+      .hero-art::before {
+        top: .1rem;
+        left: .1rem;
+        content: "✦";
+      }
+      .hero-art::after {
+        right: .1rem;
+        bottom: .4rem;
+        color: var(--red);
+        content: "♡";
+      }
+      .hero-art:hover::before, .hero-art:hover::after,
+      .hero-art:focus-within::before, .hero-art:focus-within::after {
+        opacity: 1;
+        transform: scale(1.35);
+        animation: hero-sparkle .7s ease-in-out infinite alternate;
+      }
+      .polaroid {
+        position: relative;
+        display: block;
         width: 100%;
-        height: 390px;
+        padding: .8rem .8rem 3.5rem;
+        border: 0;
+        border-radius: 8px;
+        background: var(--cream);
+        box-shadow: 0 18px 38px rgba(80, 57, 34, .18);
+        color: var(--charcoal);
+        cursor: pointer;
+        font: inherit;
+        transform: rotate(-3deg);
+      }
+      .polaroid:hover, .hero-art:focus-within .polaroid {
+        animation: polaroid-wiggle .55s ease-in-out both;
+        box-shadow: 0 22px 42px rgba(80, 57, 34, .22);
+      }
+      .polaroid:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 4px;
+      }
+      .polaroid-tape {
+        position: absolute;
+        z-index: 2;
+        top: -.55rem;
+        width: 4.7rem;
+        height: 1.35rem;
+        border: 1px solid rgba(31, 31, 31, .06);
+        border-radius: 3px;
+        opacity: .88;
+        pointer-events: none;
+      }
+      .polaroid-tape-left {
+        left: 1.15rem;
+        background: repeating-linear-gradient(45deg, #d8cbed 0 6px, #cdbfe6 6px 12px);
+        transform: rotate(-28deg);
+      }
+      .polaroid-tape-right {
+        right: 1.15rem;
+        background: repeating-linear-gradient(45deg, #e1ca82 0 6px, #c9a227 6px 12px);
+        transform: rotate(28deg);
+      }
+      .polaroid img {
+        width: 100%;
+        height: 340px;
+        border-radius: 2px;
         object-fit: cover;
         object-position: center;
       }
       .art-note {
         position: absolute;
-        right: -1rem;
-        bottom: 1.6rem;
-        padding: .65rem 1rem;
-        border: 1px solid rgba(128, 100, 62, .15);
-        border-radius: 999px;
-        background: var(--paper);
-        box-shadow: 0 8px 24px rgba(31, 31, 31, .1);
-        color: #81642d;
-        font: 400 1.55rem/1 var(--script);
-        transform: rotate(-4deg);
+        right: .8rem;
+        bottom: .65rem;
+        left: .8rem;
+        color: #9c7420;
+        font: 400 1.7rem/1 var(--script);
+        text-align: center;
+      }
+      .hero-doodle {
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+        animation: doodle-float 2.8s ease-in-out infinite;
+      }
+      .hero-doodle-heart {
+        top: 17%;
+        right: .1rem;
+        color: var(--red);
+        font-size: 1.2rem;
+      }
+      .hero-doodle-sparkle {
+        bottom: 15%;
+        left: .1rem;
+        color: var(--lavender);
+        font-size: 1.55rem;
+        animation-delay: .6s;
+      }
+      .heart-burst {
+        position: absolute;
+        z-index: 4;
+        top: 20%;
+        left: 50%;
+        pointer-events: none;
+      }
+      .heart-burst span {
+        position: absolute;
+        color: var(--red);
+        font-size: 1.2rem;
+        opacity: 0;
+      }
+      .heart-burst span:nth-child(1) { --heart-x: -2.7rem; --heart-y: -2.8rem; }
+      .heart-burst span:nth-child(2) { --heart-x: 0; --heart-y: -3.5rem; }
+      .heart-burst span:nth-child(3) { --heart-x: 2.7rem; --heart-y: -2.8rem; }
+      .hero-art.is-celebrating .polaroid {
+        animation: polaroid-bounce .65s ease-in-out both;
+      }
+      .hero-art.is-celebrating .heart-burst span {
+        animation: heart-pop .75s ease-out both;
+      }
+      .hero-art.is-celebrating .heart-burst span:nth-child(2) { animation-delay: .06s; }
+      .hero-art.is-celebrating .heart-burst span:nth-child(3) { animation-delay: .12s; }
+      @keyframes hero-art-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+      @keyframes doodle-float {
+        0%, 100% { transform: translateY(0) rotate(-6deg); }
+        50% { transform: translateY(-7px) rotate(7deg); }
+      }
+      @keyframes hero-sparkle {
+        to { transform: scale(1.55) rotate(12deg); }
+      }
+      @keyframes polaroid-wiggle {
+        0% { transform: rotate(-3deg) scale(1); }
+        25% { transform: rotate(-1deg) scale(1.04); }
+        50% { transform: rotate(1deg) scale(1.04); }
+        75% { transform: rotate(-.5deg) scale(1.04); }
+        100% { transform: rotate(0) scale(1.04); }
+      }
+      @keyframes polaroid-bounce {
+        0%, 100% { transform: rotate(0) scale(1.04); }
+        35% { transform: rotate(-6deg) scale(1.1); }
+        70% { transform: rotate(5deg) scale(1.08); }
+      }
+      @keyframes heart-pop {
+        0% { opacity: 0; transform: translate(0, 0) scale(.3); }
+        25% { opacity: 1; }
+        100% { opacity: 0; transform: translate(var(--heart-x), var(--heart-y)) scale(1.2); }
       }
 
       .section.instagram-section { padding-block: 2rem 3.5rem; }
@@ -607,7 +747,7 @@
       @media (min-width: 620px) {
         .hero { padding-block: 5rem 6rem; }
         .hero-inner { grid-template-columns: 1.1fr .9fr; gap: 2rem; }
-        .hero-art img { height: 440px; }
+        .polaroid img { height: 440px; }
         .fathers-banner-inner {
           flex-direction: row;
           align-items: center;
@@ -643,6 +783,7 @@
           scroll-behavior: auto !important;
           transition-duration: .01ms !important;
           animation-duration: .01ms !important;
+          animation-delay: 0s !important;
           animation-iteration-count: 1 !important;
         }
       }
@@ -677,8 +818,15 @@
             </div>
           </div>
           <div class="hero-art">
-            <img src="images/Screenshot 2026-11-23 165115.png" alt="Handmade card showing two colourful hands meeting over a cup of chai">
-            <span class="art-note">made just for you</span>
+            <button class="polaroid" type="button" aria-label="Celebrate this handmade card showing two colourful hands meeting over a cup of chai">
+              <span class="polaroid-tape polaroid-tape-left" aria-hidden="true"></span>
+              <span class="polaroid-tape polaroid-tape-right" aria-hidden="true"></span>
+              <img src="images/Screenshot 2026-11-23 165115.png" alt="">
+              <span class="art-note" aria-hidden="true">made just for you</span>
+            </button>
+            <span class="hero-doodle hero-doodle-heart" aria-hidden="true">♥</span>
+            <span class="hero-doodle hero-doodle-sparkle" aria-hidden="true">✦</span>
+            <span class="heart-burst" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span></span>
           </div>
         </div>
       </section>
@@ -917,6 +1065,20 @@
       const orderForm = document.querySelector("#order-form");
       const phoneInput = document.querySelector("#phone");
       const formStatus = document.querySelector("#form-status");
+      const heroArt = document.querySelector(".hero-art");
+      const polaroid = heroArt.querySelector(".polaroid");
+      const lastBurstHeart = heroArt.querySelector(".heart-burst span:last-child");
+
+      polaroid.addEventListener("click", () => {
+        heroArt.classList.remove("is-celebrating");
+        requestAnimationFrame(() => heroArt.classList.add("is-celebrating"));
+      });
+
+      lastBurstHeart.addEventListener("animationend", (event) => {
+        if (event.animationName === "heart-pop") {
+          heroArt.classList.remove("is-celebrating");
+        }
+      });
 
       orderForm.addEventListener("submit", (event) => {
         event.preventDefault();
