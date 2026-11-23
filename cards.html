@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FAF6F0">
+    <meta name="description" content="Browse sample handmade card ideas for every kind of occasion from Express It.">
+    <title>Card Ideas — Express It</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --kraft: #C8A27A;
+        --cream: #FAF6F0;
+        --charcoal: #1F1F1F;
+        --gold: #C9A227;
+        --lavender: #CDBFE6;
+        --red: #C8102E;
+        --paper: #fffdf9;
+        --muted: #71695f;
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "Poppins", sans-serif;
+        --script: "Great Vibes", cursive;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 12% 14%, rgba(200, 162, 122, .12), transparent 28rem),
+          var(--cream);
+        color: var(--charcoal);
+        font-family: var(--sans);
+        line-height: 1.65;
+      }
+      a { color: inherit; }
+      .skip-link {
+        position: absolute;
+        top: -4rem;
+        left: 1rem;
+        z-index: 3;
+        padding: .7rem 1rem;
+        border-radius: 999px;
+        background: var(--charcoal);
+        color: white;
+      }
+      .skip-link:focus { top: 1rem; }
+      .site-header {
+        border-bottom: 1px solid rgba(31, 31, 31, .08);
+        background: rgba(250, 246, 240, .9);
+      }
+      .header-inner, .section-inner, .footer-inner {
+        width: min(1120px, calc(100% - 2.5rem));
+        margin-inline: auto;
+      }
+      .header-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem 1rem;
+        padding-block: 1rem;
+      }
+      .brand { text-decoration: none; }
+      .brand-name {
+        display: block;
+        font: 700 1.65rem/1.05 var(--serif);
+        letter-spacing: -.04em;
+      }
+      .brand-tagline {
+        display: block;
+        margin-top: .25rem;
+        color: var(--muted);
+        font-size: .68rem;
+      }
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+        font-size: .78rem;
+        font-weight: 500;
+      }
+      .main-nav a {
+        padding: .5rem .7rem;
+        border-radius: 999px;
+        text-decoration: none;
+      }
+      .main-nav a:hover, .main-nav a:focus-visible {
+        background: #efe5d8;
+        outline: none;
+      }
+      .main-nav .nav-current {
+        background: #efe5d8;
+      }
+      .main-nav .nav-order {
+        background: var(--charcoal);
+        color: white;
+      }
+      .hero {
+        padding-block: 3.2rem 2.5rem;
+        text-align: center;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: .55rem;
+        color: #80643e;
+        font-size: .7rem;
+        font-weight: 600;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 1.4rem;
+        height: 1px;
+        background: var(--gold);
+        content: "";
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      h1, h2, h3 { font-family: var(--serif); }
+      h1 {
+        margin-block: .9rem .65rem;
+        font-size: clamp(2.6rem, 9vw, 4.7rem);
+        font-weight: 600;
+        letter-spacing: -.055em;
+        line-height: 1.08;
+      }
+      .script-accent {
+        color: #9c7420;
+        font: 400 1.1em/.8 var(--script);
+        letter-spacing: 0;
+      }
+      .hero p {
+        max-width: 39rem;
+        margin-inline: auto;
+        color: var(--muted);
+        font-size: .9rem;
+      }
+      .sample-note {
+        display: inline-block;
+        margin-top: .45rem;
+        padding: .55rem .9rem;
+        border: 1px solid rgba(201, 162, 39, .35);
+        border-radius: 999px;
+        background: rgba(255, 253, 249, .7);
+        color: #6d571c;
+        font-size: .72rem;
+        font-weight: 500;
+      }
+      .catalog { padding-block: 1rem 5rem; }
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+      }
+      .category-card {
+        overflow: hidden;
+        border: 1px solid rgba(31, 31, 31, .08);
+        border-radius: 22px;
+        background: var(--paper);
+        box-shadow: 0 8px 24px rgba(80, 57, 34, .06);
+      }
+      .category-head {
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        padding: 1.1rem 1.1rem .9rem;
+        border-bottom: 1px solid rgba(31, 31, 31, .07);
+        background: linear-gradient(110deg, rgba(200, 162, 122, .16), rgba(255, 253, 249, .2));
+      }
+      .category-emoji {
+        display: grid;
+        width: 2.8rem;
+        height: 2.8rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border: 1px solid rgba(201, 162, 39, .28);
+        border-radius: 15px;
+        background: #fffaf1;
+        font-size: 1.4rem;
+      }
+      .category-head h2 {
+        margin: 0;
+        font-size: 1.35rem;
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      .idea-list { display: grid; gap: .65rem; padding: .8rem; }
+      .idea {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: .5rem;
+        padding: .85rem;
+        border: 1px solid rgba(31, 31, 31, .07);
+        border-radius: 15px;
+        background: #fffefa;
+      }
+      .idea h3 {
+        margin: 0;
+        font-size: .96rem;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .idea p {
+        margin: .25rem 0 0;
+        color: var(--muted);
+        font-size: .72rem;
+      }
+      .price {
+        align-self: flex-start;
+        white-space: nowrap;
+        padding: .32rem .55rem;
+        border-radius: 999px;
+        background: #f3eadb;
+        color: #6b5423;
+        font-size: .65rem;
+        font-weight: 600;
+      }
+      .order-cta {
+        padding-block: 2.5rem;
+        background: #eee5da;
+        text-align: center;
+      }
+      .order-cta h2 {
+        margin-bottom: .5rem;
+        font-size: clamp(1.7rem, 6vw, 2.4rem);
+      }
+      .order-cta p {
+        margin-bottom: 1.1rem;
+        color: var(--muted);
+        font-size: .82rem;
+      }
+      .button {
+        display: inline-flex;
+        min-height: 2.9rem;
+        align-items: center;
+        justify-content: center;
+        padding: .75rem 1.2rem;
+        border: 1px solid var(--charcoal);
+        border-radius: 999px;
+        background: var(--charcoal);
+        color: white;
+        font-size: .82rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .site-footer {
+        padding-block: 1.5rem;
+        background: var(--charcoal);
+        color: #f7f1e8;
+      }
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: .45rem;
+        font-size: .72rem;
+      }
+      .footer-inner p { margin: 0; color: #d7cec2; }
+      .footer-inner a { color: #f0d47a; text-underline-offset: 3px; }
+      @media (min-width: 620px) {
+        .hero { padding-block: 4.5rem 3rem; }
+        .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+        .idea { flex-direction: row; align-items: center; }
+        .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+      }
+      @media (min-width: 930px) {
+        .header-inner, .section-inner, .footer-inner { width: min(1120px, calc(100% - 4rem)); }
+        .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.35rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="home">
+      <div class="header-inner">
+        <a class="brand" href="index.html#home" aria-label="Express It home">
+          <span class="brand-name">Express It</span>
+          <span class="brand-tagline">We Design Your Expressions! 🤍</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html#home">Home</a>
+          <a class="nav-current" href="cards.html" aria-current="page">Cards</a>
+          <a class="nav-order" href="order.html">Order</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="section-inner">
+          <span class="eyebrow">Little keepsakes for your people</span>
+          <h1 id="page-title">A card for every <span class="script-accent">kind of love.</span></h1>
+          <p>Pick an occasion and make the words your own. Every card is custom made to order, with your personal message at the heart of it.</p>
+          <span class="sample-note">Ideas and prices below are samples only. Final details are confirmed when you order.</span>
+        </div>
+      </section>
+
+      <section class="catalog" id="categories" aria-label="Card categories and sample ideas">
+        <div class="section-inner catalog-grid">
+          <article class="category-card" aria-labelledby="birthday-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🎂</span>
+              <h2 id="birthday-title">Birthday</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Pop-up cake surprise</h3><p>A tiny cake with a big birthday wish.</p></div>
+                <span class="price">Sample price · Rs. 1,200</span>
+              </div>
+              <div class="idea">
+                <div><h3>Birthday in blooms</h3><p>A cheerful floral note for their day.</p></div>
+                <span class="price">Sample price · Rs. 1,400</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="anniversary-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">💌</span>
+              <h2 id="anniversary-title">Anniversary</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Our little timeline</h3><p>Favourite moments, folded into a card.</p></div>
+                <span class="price">Sample price · Rs. 1,500</span>
+              </div>
+              <div class="idea">
+                <div><h3>Six reasons I love you</h3><p>Little notes for your favourite person.</p></div>
+                <span class="price">Sample price · Rs. 1,300</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="valentines-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🌹</span>
+              <h2 id="valentines-title">Valentine’s</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Tum mai aur aik cup chai</h3><p>A cosy little note for your chai date.</p></div>
+                <span class="price">Sample price · Rs. 1,200</span>
+              </div>
+              <div class="idea">
+                <div><h3>Love notes, one by one</h3><p>A card with tiny messages to unfold.</p></div>
+                <span class="price">Sample price · Rs. 1,600</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="mothers-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🌷</span>
+              <h2 id="mothers-title">Mother’s Day</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Ammi, meri pehli bestie</h3><p>A sweet note for your forever favourite.</p></div>
+                <span class="price">Sample price · Rs. 1,200</span>
+              </div>
+              <div class="idea">
+                <div><h3>A bouquet of thank-yous</h3><p>Paper flowers and words from the heart.</p></div>
+                <span class="price">Sample price · Rs. 1,500</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="fathers-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🦸</span>
+              <h2 id="fathers-title">Father’s Day</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Abbu jee tussi great ho</h3><p>A little cheer for your everyday hero.</p></div>
+                <span class="price">Sample price · Rs. 1,200</span>
+              </div>
+              <div class="idea">
+                <div><h3>My superhero, Abbu</h3><p>A playful card with a pop-up surprise.</p></div>
+                <span class="price">Sample price · Rs. 1,600</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="eid-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🌙</span>
+              <h2 id="eid-title">Eid</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Eid Mubarak florals</h3><p>A crescent, blooms, and warm wishes.</p></div>
+                <span class="price">Sample price · Rs. 1,300</span>
+              </div>
+              <div class="idea">
+                <div><h3>A little Eidi pocket</h3><p>A card made to hold a small surprise.</p></div>
+                <span class="price">Sample price · Rs. 1,500</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="graduation-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🎓</span>
+              <h2 id="graduation-title">Graduation</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Pull-tab cap and gown</h3><p>Slide out a little “you did it!”</p></div>
+                <span class="price">Sample price · Rs. 1,500</span>
+              </div>
+              <div class="idea">
+                <div><h3>Next chapter, here you come</h3><p>A keepsake for their proud moment.</p></div>
+                <span class="price">Sample price · Rs. 1,300</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="thank-you-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🌼</span>
+              <h2 id="thank-you-title">Thank You</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>A paper flower bouquet</h3><p>Flowers that come with a heartfelt note.</p></div>
+                <span class="price">Sample price · Rs. 1,200</span>
+              </div>
+              <div class="idea">
+                <div><h3>Shukriya, from the heart</h3><p>A simple card for a very big thanks.</p></div>
+                <span class="price">Sample price · Rs. 1,000</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card" aria-labelledby="gift-boxes-title">
+            <header class="category-head">
+              <span class="category-emoji" aria-hidden="true">🎁</span>
+              <h2 id="gift-boxes-title">Gift Boxes</h2>
+            </header>
+            <div class="idea-list">
+              <div class="idea">
+                <div><h3>Chai-time little bundle</h3><p>A card tucked in with a cosy treat.</p></div>
+                <span class="price">Sample price · Rs. 2,500</span>
+              </div>
+              <div class="idea">
+                <div><h3>Keepsake note box</h3><p>A card and tiny notes to keep close.</p></div>
+                <span class="price">Sample price · Rs. 3,000</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="order-cta" aria-labelledby="order-cta-title">
+        <div class="section-inner">
+          <h2 id="order-cta-title">Have your own idea?</h2>
+          <p>Tell us what you’re celebrating and add the words you want to share.</p>
+          <a class="button" href="order.html">Start your order <span aria-hidden="true">&nbsp;→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© Express It · Handmade with love in Pakistan</p>
+        <p>Say hello on Instagram: <a href="https://www.instagram.com/expressit.pk/" target="_blank" rel="noopener noreferrer">@expressit.pk</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

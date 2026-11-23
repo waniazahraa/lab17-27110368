@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FAF6F0">
+    <meta name="description" content="Share your idea for a custom handmade card from Express It.">
+    <title>Place an Order — Express It</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --kraft: #C8A27A;
+        --cream: #FAF6F0;
+        --charcoal: #1F1F1F;
+        --gold: #C9A227;
+        --lavender: #CDBFE6;
+        --red: #C8102E;
+        --paper: #fffdf9;
+        --muted: #71695f;
+        --serif: "Playfair Display", Georgia, serif;
+        --sans: "Poppins", sans-serif;
+        --script: "Great Vibes", cursive;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background:
+          radial-gradient(ellipse at 12% 14%, rgba(200, 162, 122, .12), transparent 28rem),
+          var(--cream);
+        color: var(--charcoal);
+        font-family: var(--sans);
+        line-height: 1.65;
+      }
+      a { color: inherit; }
+      .skip-link {
+        position: absolute;
+        top: -4rem;
+        left: 1rem;
+        z-index: 3;
+        padding: .7rem 1rem;
+        border-radius: 999px;
+        background: var(--charcoal);
+        color: white;
+      }
+      .skip-link:focus { top: 1rem; }
+      .site-header {
+        border-bottom: 1px solid rgba(31, 31, 31, .08);
+        background: rgba(250, 246, 240, .9);
+      }
+      .header-inner, .content-inner, .footer-inner {
+        width: min(1120px, calc(100% - 2.5rem));
+        margin-inline: auto;
+      }
+      .header-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem 1rem;
+        padding-block: 1rem;
+      }
+      .brand { text-decoration: none; }
+      .brand-name {
+        display: block;
+        font: 700 1.65rem/1.05 var(--serif);
+        letter-spacing: -.04em;
+      }
+      .brand-tagline {
+        display: block;
+        margin-top: .25rem;
+        color: var(--muted);
+        font-size: .68rem;
+      }
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+        font-size: .78rem;
+        font-weight: 500;
+      }
+      .main-nav a {
+        padding: .5rem .7rem;
+        border-radius: 999px;
+        text-decoration: none;
+      }
+      .main-nav a:hover, .main-nav a:focus-visible {
+        background: #efe5d8;
+        outline: none;
+      }
+      .main-nav .nav-order {
+        background: var(--charcoal);
+        color: white;
+      }
+      main { flex: 1; }
+      .order-section { padding-block: 2.5rem 4rem; }
+      .order-layout {
+        display: grid;
+        gap: 1.5rem;
+        align-items: start;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: .55rem;
+        color: #80643e;
+        font-size: .7rem;
+        font-weight: 600;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 1.4rem;
+        height: 1px;
+        background: var(--gold);
+        content: "";
+      }
+      h1, h2, p { margin-top: 0; }
+      h1, h2 { font-family: var(--serif); }
+      h1 {
+        max-width: 12ch;
+        margin-block: .8rem 1rem;
+        font-size: clamp(2.6rem, 10vw, 4.3rem);
+        font-weight: 600;
+        letter-spacing: -.05em;
+        line-height: 1.08;
+      }
+      .script-accent {
+        color: #9c7420;
+        font: 400 1.1em/.8 var(--script);
+        letter-spacing: 0;
+      }
+      .intro {
+        max-width: 32rem;
+        color: var(--muted);
+        font-size: .88rem;
+      }
+      .custom-note {
+        display: inline-block;
+        margin-top: .25rem;
+        padding: .55rem .85rem;
+        border: 1px solid rgba(201, 162, 39, .35);
+        border-radius: 12px;
+        background: rgba(255, 253, 249, .7);
+        color: #6d571c;
+        font-size: .75rem;
+        font-weight: 600;
+      }
+      .order-form {
+        display: grid;
+        gap: 1rem;
+        padding: 1.1rem;
+        border: 1px solid rgba(31, 31, 31, .08);
+        border-radius: 24px;
+        background: var(--paper);
+        box-shadow: 0 12px 35px rgba(80, 57, 34, .08);
+      }
+      .form-row { display: grid; gap: 1rem; }
+      .field { display: grid; gap: .4rem; }
+      .field label {
+        font-size: .75rem;
+        font-weight: 600;
+      }
+      .field input, .field select, .field textarea {
+        width: 100%;
+        min-height: 2.9rem;
+        padding: .7rem .8rem;
+        border: 1px solid #ded5c9;
+        border-radius: 12px;
+        background: #fffefa;
+        color: var(--charcoal);
+        font: 400 .82rem var(--sans);
+      }
+      .field textarea { min-height: 7rem; resize: vertical; }
+      .field input:focus, .field select:focus, .field textarea:focus {
+        border-color: var(--gold);
+        outline: 3px solid rgba(201, 162, 39, .16);
+      }
+      .field input[aria-invalid="true"] { border-color: var(--red); }
+      .field-hint, .form-fine-print {
+        color: var(--muted);
+        font-size: .68rem;
+      }
+      .field-error {
+        margin: 0;
+        color: #a20d25;
+        font-size: .72rem;
+        font-weight: 500;
+      }
+      .field-error:empty { display: none; }
+      .button {
+        display: inline-flex;
+        min-height: 2.9rem;
+        align-items: center;
+        justify-content: center;
+        padding: .75rem 1.2rem;
+        border: 1px solid var(--charcoal);
+        border-radius: 999px;
+        background: var(--charcoal);
+        color: white;
+        font: 600 .82rem var(--sans);
+        cursor: pointer;
+      }
+      .form-submit { width: 100%; }
+      .form-status {
+        margin: 0;
+        border-radius: 12px;
+        color: #6d571c;
+        font-size: .78rem;
+      }
+      .form-status:empty { display: none; }
+      .form-fine-print { margin: 0; }
+      .site-footer {
+        padding-block: 1.5rem;
+        background: var(--charcoal);
+        color: #f7f1e8;
+      }
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        gap: .45rem;
+        font-size: .72rem;
+      }
+      .footer-inner p { margin: 0; color: #d7cec2; }
+      .footer-inner a { color: #f0d47a; text-underline-offset: 3px; }
+      @media (min-width: 620px) {
+        .order-section { padding-block: 4rem 5rem; }
+        .order-layout { grid-template-columns: .8fr 1.2fr; gap: 3rem; }
+        .order-form { padding: 1.6rem; }
+        .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+      }
+      @media (min-width: 930px) {
+        .header-inner, .content-inner, .footer-inner { width: min(1120px, calc(100% - 4rem)); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="home">
+      <div class="header-inner">
+        <a class="brand" href="index.html#home" aria-label="Express It home">
+          <span class="brand-name">Express It</span>
+          <span class="brand-tagline">We Design Your Expressions! 🤍</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html#home">Home</a>
+          <a href="cards.html">Cards</a>
+          <a class="nav-order" href="order.html" aria-current="page">Order</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="order-section" aria-labelledby="order-title">
+        <div class="content-inner order-layout">
+          <div class="order-copy">
+            <span class="eyebrow">A little note, made just for them</span>
+            <h1 id="order-title">Let’s make it <span class="script-accent">personal.</span></h1>
+            <p class="intro">Every card is custom made to order. Tell us what you’re celebrating, who it’s for, and the words you’d love them to keep.</p>
+            <span class="custom-note">Made with care, from your idea 🤍</span>
+          </div>
+
+          <form class="order-form" id="order-form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="What should we call you?" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="03XXXXXXXXX" pattern="03[0-9]{9}" minlength="11" maxlength="11" aria-describedby="phone-hint phone-error" required>
+                <span class="field-hint" id="phone-hint">11 digits, starting with 03.</span>
+                <p class="field-error" id="phone-error" role="alert"></p>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="card-type">Card type</label>
+                <select id="card-type" name="card-type" required>
+                  <option value="" selected disabled>Choose a card</option>
+                  <option>Birthday</option>
+                  <option>Anniversary</option>
+                  <option>Valentine’s</option>
+                  <option>Mother’s Day</option>
+                  <option>Father’s Day</option>
+                  <option>Eid</option>
+                  <option>Graduation</option>
+                  <option>Thank You</option>
+                  <option>Gift Box</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="occasion">Who or what are we celebrating?</label>
+                <input id="occasion" name="occasion" type="text" placeholder="e.g. Ammi’s birthday" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Your personal message</label>
+              <textarea id="message" name="message" placeholder="The words you want them to keep..." required></textarea>
+            </div>
+            <div class="field">
+              <label for="city">Delivery city</label>
+              <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Lahore" required>
+            </div>
+            <button class="button form-submit" type="submit">Send a little note <span aria-hidden="true">&nbsp;→</span></button>
+            <p class="form-fine-print">Sample form: your details are checked in this browser only. They are not sent or saved.</p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© Express It · Handmade with love in Pakistan</p>
+        <p>Say hello on Instagram: <a href="https://www.instagram.com/expressit.pk/" target="_blank" rel="noopener noreferrer">@expressit.pk</a></p>
+      </div>
+    </footer>
+
+    <script>
+      const orderForm = document.querySelector("#order-form");
+      const phoneInput = document.querySelector("#phone");
+      const phoneError = document.querySelector("#phone-error");
+      const formStatus = document.querySelector("#form-status");
+      const phonePattern = /^03\d{9}$/;
+
+      function clearPhoneError() {
+        phoneError.textContent = "";
+        phoneInput.removeAttribute("aria-invalid");
+      }
+
+      phoneInput.addEventListener("input", () => {
+        formStatus.textContent = "";
+        if (phonePattern.test(phoneInput.value)) {
+          clearPhoneError();
+        }
+      });
+
+      orderForm.addEventListener("input", () => {
+        formStatus.textContent = "";
+      });
+
+      orderForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        formStatus.textContent = "";
+
+        if (!phonePattern.test(phoneInput.value)) {
+          phoneInput.setAttribute("aria-invalid", "true");
+          phoneError.textContent = "Hmm, please enter 11 digits starting with 03. You’ve got this!";
+          phoneInput.focus();
+          return;
+        }
+        clearPhoneError();
+
+        if (!orderForm.checkValidity()) {
+          orderForm.reportValidity();
+          return;
+        }
+
+        const name = orderForm.elements.name.value.trim();
+        formStatus.textContent = `Thank you${name ? `, ${name}` : ""}! Your order details look good. This sample form doesn’t send or save orders yet. Message us on Instagram @expressit.pk to place your order.`;
+      });
+    </script>
+  </body>
+</html>
